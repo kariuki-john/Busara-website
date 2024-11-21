@@ -48,18 +48,56 @@ const ApplyForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  // Handle file change
-  const handleFileChange = (e) => {
-    const { name, files } = e.target;
-    setFormData({ ...formData, [name]: files[0] });
-  };
+const handleFileChange = (e) => {
+  const { name, files } = e.target;
+  
+  setFormData({
+    ...formData,
+    [name]: files.length > 1 ? [...files] : files[0], 
+  });
+};
 
-  // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic ( API call)
-    console.log('Form Data Submitted:', formData);
-  };
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const formDataToSubmit = new FormData();
+  formDataToSubmit.append('name', formData.name);
+  formDataToSubmit.append('idNumber', formData.idNumber);
+  formDataToSubmit.append('email', formData.email);
+  formDataToSubmit.append('phone', formData.phone);
+  formDataToSubmit.append('course', formData.course);
+  formDataToSubmit.append('briefInformation', formData.briefInformation);
+
+  if (formData.certification) {
+    if (Array.isArray(formData.certification)) {
+      formData.certification.forEach((file) => {
+        formDataToSubmit.append('certification', file);
+      });
+    } else {
+      formDataToSubmit.append('certification', formData.certification);
+    }
+  }
+
+  try {
+    const response = await fetch('http://localhost:5000/applications', {
+      method: 'POST',
+      body: formDataToSubmit,
+    });
+
+    if (response.ok) {
+      alert('Application submitted successfully!');
+    } else {
+      const errorData = await response.json();
+      console.error('Error details:', errorData); 
+      alert(errorData.error || 'There was an issue submitting your application.');
+    }
+  } catch (error) {
+    console.error('Error submitting form:', error); 
+    alert('An error occurred. Please try again later.');
+  }
+};
+  
 
   return (
     <div className='bg-backgroundcolor'>
@@ -134,9 +172,10 @@ const ApplyForm = () => {
 
         <div className="space-y-2">
           <label className="block font-semibold">
-            Scanned Certification Document:
+            Scanned Certificate,Birth, ID front & Back:
             <input
               type="file"
+              multiple
               name="certification"
               onChange={handleFileChange}
               className="block w-full mt-1 required"
@@ -144,17 +183,7 @@ const ApplyForm = () => {
               required
             />
           </label>
-          <label className="block font-semibold">
-            Scanned ID Document:
-            <input
-              type="file"
-              name="idDocument"
-              onChange={handleFileChange}
-              className="block w-full mt-1 required"
-              accept=".pdf,.jpg,.jpeg,.png"
-              required
-            />
-          </label>
+          
         </div>
 
         
@@ -175,6 +204,7 @@ const ApplyForm = () => {
         <div>
           <button
             type="submit"
+            onClick={handleSubmit}
             className="px-4 py-2 bg-primary w-36 text-white rounded hover:bg-blue-600"
           >
             Submit

@@ -11,6 +11,10 @@ export const Header = () => {
   const handleButtonClick = () => {
     navigate('/applyNow'); 
   };
+
+  const handlePageAdmin = () => {
+    navigate('/adminPage')
+  }
   return (
     <>
       <header className="bg-headercolor py-2 text-white sticky z-50 shadow-md top-0 left-0 w-full">
@@ -43,8 +47,8 @@ export const Header = () => {
             <button onClick={handleButtonClick} className="bg-buttoncolor p-2 rounded-lg  flex align-center justify-center text-black font-bold">
               APPLY NOW
             </button>
-            <button className="bg-buttoncolor p-2 rounded-lg  flex align-center justify-center text-black font-bold">
-              STUDENT PORTAL
+            <button onClick={handlePageAdmin} className="bg-buttoncolor p-2 rounded-lg  flex align-center justify-center text-black font-bold">
+              ADMIN PORTAL
             </button>{" "}
             <button className="open-menu" onClick={() => setOpen(!open)}>
               <HiOutlineMenuAlt1 size={25} />

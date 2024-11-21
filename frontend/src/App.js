@@ -8,6 +8,7 @@ import { Courses } from "./pages/Courses";
 import { Blog } from "./pages/Blog";
 import { Training } from "./pages/Training";
 import ApplyForm from "./components/common/applyForm";
+import Applications from "./pages/Applications";
 
 
 function App() {
@@ -68,6 +69,14 @@ function App() {
           element={
             <Layout>
               <ApplyForm/>
+            </Layout>
+          }
+          />
+          <Route
+          path="/adminPage"
+          element={
+            <Layout>
+              <Applications/>
             </Layout>
           }
           />
