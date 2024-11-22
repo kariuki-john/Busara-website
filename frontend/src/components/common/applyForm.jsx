@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 
 const ApplyForm = () => {
@@ -80,7 +81,7 @@ const handleSubmit = async (e) => {
   }
 
   try {
-    const response = await fetch('http://localhost:5000/applications', {
+    const response = await axios.post('http://localhost:5000/applications', {
       method: 'POST',
       body: formDataToSubmit,
     });
