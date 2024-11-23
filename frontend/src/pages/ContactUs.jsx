@@ -58,7 +58,7 @@ export const ContactUs = (e) => {
           </div>
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Email Address
+              Email 
             </label>
             <input
             onChange={(e) => {setEmail(e.target.value)}}

@@ -4,8 +4,8 @@ import { NavLink } from "react-router-dom";
 export const Footer = () => {
   return (
     <>
-      <section className="app w-4/5 m-auto rounded-lg shadow-shadow2 text-white flex md:flex-col bg-backgroundcolor mt-16 relative z-10">
-        <div className="left w-[60%] md:w-full p-10">
+      <section className="app w-4/5 m-auto rounded-lg shadow-shadow2 text-white flex md:flex-col bg-backgroundcolor mt-48  sticky ">
+        <div className="left w-[60%] md:w-full p-5">
           <h1 className="text-4xl font-semibold leading-tight">
             Start learning by <br /> Joining Us.
           </h1>

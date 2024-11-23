@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
-const multer = require('multer')
-const path = require('path')
+
 
 const ContactusSchema = mongoose.Schema(
     {
@@ -24,4 +23,4 @@ const ContactusSchema = mongoose.Schema(
 
 const ContactUs = mongoose.model("ContuctUs",ContactusSchema)
 
-module.exports = {ContactUs}
+module.exports = ContactUs

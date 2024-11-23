@@ -7,8 +7,8 @@ import { About } from "./pages/About";
 import { Courses } from "./pages/Courses";
 import { Blog } from "./pages/Blog";
 import { Training } from "./pages/Training";
-import ApplyForm from "./components/common/applyForm";
 import Applications from "./pages/Applications";
+import ApplicationForm from "./components/common/applyForm";
 
 
 function App() {
@@ -68,7 +68,7 @@ function App() {
           path="/applyNow"
           element={
             <Layout>
-              <ApplyForm/>
+              <ApplicationForm/>
             </Layout>
           }
           />
