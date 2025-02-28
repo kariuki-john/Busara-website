@@ -67,7 +67,7 @@ const ApplicationForm = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/sendApplication', formDataToSend, {
+      const response = await axios.post('https://john.wangombe.com/busara/backend/api/sendApplication', formDataToSend, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

@@ -11,7 +11,7 @@ const CustomerFeedback = () => {
   useEffect(() => {
     const fetchFeedback = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/getComments");
+        const response = await fetch("https://john.wangombe.com/busara/backend/api/getComments");
         if (!response.ok) {
           throw new Error("Failed to fetch feedback");
         }

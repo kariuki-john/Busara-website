@@ -13,7 +13,7 @@ const Applications = () => {
   useEffect(() => {
     const fetchApplications = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/getApplications");
+        const response = await fetch("https://john.wangombe.com/busara/backend/api/getApplications");
         const data = await response.json();
         setApplications(data);
       } catch (error) {

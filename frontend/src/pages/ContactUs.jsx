@@ -19,7 +19,7 @@ export const ContactUs = (e) => {
 
     try {
     
-      await axios.post("http://localhost:5000/api/getFeedback",{
+      await axios.post("https://john.wangombe.com/busara/backend/api/getFeedback",{
         name,email,message
       });
       setSuccess(true); 
